@@ -71,14 +71,16 @@ namespace TestProject
             Console.WriteLine("Test Description: " + sequence.getTestDescription());
 
             // Just to do some stuff with edge
-            var options = new EdgeOptions();
-            options.UseChromium = true;
-            options.BinaryLocation = @"C:\\Work\\selenium\\edgedriver_win64\\MicrosoftWebDriver.exe";
 
-            var driver = new EdgeDriver(options);
+            String driverDir = "C:\\Work\\selenium\\edgedriver_win64";
+            String driverExe = "msedgedriver.exe";
+
+            EdgeDriverService edgeService = EdgeDriverService.CreateDefaultService(driverDir,driverExe);
+            
+            EdgeOptions edgeOptions = new EdgeOptions();
 
 
-            IWebDriver driver = new EdgeDriver("C:\\Work\\selenium\\edgedriver_win64\\MicrosoftWebDriver.exe");
+            IWebDriver driver = new EdgeDriver(edgeService,edgeOptions);
 
             sequence.runTestSequence(driver);
 
